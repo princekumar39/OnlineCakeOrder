@@ -7,7 +7,21 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h2>Your Orders</h2>
+  <header>
+    <div class="logo">Welcome to Cake Delights</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+      <a href="products.html">Cakes</a>
+      <button onclick="logout()">Logout</button>
+    </nav>
+  </header>
+
+  <div class="order-list">
+    <h1>Your Orders</h2>
+     <h2>Currently You dont have any orders.</h2>
+  </div>
   <div id="orderList"></div>
   <script src="./js/order.js"></script>
 </body>

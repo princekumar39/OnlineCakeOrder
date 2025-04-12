@@ -1,37 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Cake Shop</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <a class="cart-icon" href="cart.html">🛒 Go to Cart</a>
 
-  <h2>Available Cakes</h2>
+  <!-- Header/Navbar -->
+  <header>
+    <div class="logo">Welcome to Cake Delights </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="product.html">Products</a>
+      <a href="cart.html">Cart</a>
+      <button onclick="logout()">Logout</button>
+    </nav>
+  </header>
 
-  <!-- 🔍 Search and Filter UI -->
-  <div style="margin-bottom: 20px;">
-    <input type="text" id="searchInput" placeholder="Search cakes..." style="padding: 5px;">
-    <input type="number" id="minPrice" placeholder="Min ₹" style="padding: 5px; width: 80px;">
-    <input type="number" id="maxPrice" placeholder="Max ₹" style="padding: 5px; width: 80px;">
-    <button onclick="applyFilters()" style="padding: 6px 10px;">Filter</button>
-  </div>
+  <!-- Main Cake Section -->
+  <main>
+    <section class="cake-section">
+      <h2>Available Cakes</h2>
 
-  <div id="productList"></div>
+      <!-- Search and Filter -->
+      <div style="margin-bottom: 20px;">
+        <input type="text" id="searchInput" placeholder="Search cakes..." style="padding: 5px;" />
+        <input type="number" id="minPrice" placeholder="Min ₹" style="padding: 5px; width: 80px;" />
+        <input type="number" id="maxPrice" placeholder="Max ₹" style="padding: 5px; width: 80px;" />
+        <button onclick="applyFilters()" style="padding: 6px 10px;">Filter</button>
+      </div>
 
+      <!-- Go to Cart Button -->
+      <div class="cart-button-container">
+        <a class="cart-button" href="cart.html">🛒 Go to Cart</a>
+      </div>
+
+      <!-- Cake List Render Area -->
+      <div id="productList" class="cake-list"></div>
+    </section>
+  </main>
+
+  <!-- JS Script -->
   <script src="js/product.js"></script>
-  <!-- Add to nav (for index.html) or near cart icon (for products.html) -->
-<button onclick="logout()">Logout</button>
-
-<script>
-  function logout() {
-    localStorage.removeItem("token");
-    localStorage.removeItem("cart");
-    window.location.href = "login.html";
-  }
-</script>
-
+  <script>
+    // Logout function to clear the local storage and redirect to login page
+    function logout() {
+      localStorage.removeItem("token");
+      localStorage.removeItem("cart");
+      window.location.href = "login.html";
+    }
+  </script>
 </body>
 </html>

@@ -5,11 +5,81 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cart</title>
   <link rel="stylesheet" href="style.css">
+  <!-- font awesome  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body>
-  <h2>Your Cart</h2>
-  <div id="cartItems"></div>
-  <button onclick="placeOrder()">Place Order</button>
+<body class="cart-page">
+  <!-- Header Section -->
+  <header>
+    <div class="logo">Welcome to Cake Delights</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+      <a href="products.html">Cakes</a>
+      <button onclick="logout()">Logout</button>
+    </nav>
+  </header>
+
+  <!-- Main Content: Cart Section -->
+  <main>
+    <h2>Your Cart</h2>
+    <div id="cartItems"></div>
+    <button class="cart-button-order" onclick="placeOrder()">Place Order</button>
+  </main>
+
+    <!-- Footer Section -->
+<footer>
+  <div class="footer-container">
+    <div class="footer-left">
+      <p>© 2025 Designed by Prince Kumar</p>
+    </div>
+    <div class="footer-center">
+      <a href="https://www.linkedin.com/in/prince-kumar-455284260/" target="_blank" aria-label="LinkedIn">
+        <i class="fa fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/princekumar39" target="_blank" aria-label="GitHub">
+        <i class="fa fa-github"></i>
+      </a>
+      <a href="mailto:singhaniaprince39@gmail.com" aria-label="Email">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </div>
+    <div class="footer-right">
+      <p>Want to hire me?</p>
+      <a href="https://imprincekumar.netlify.app/" class="message-btn">Message</a>
+    </div>
+  </div>
+</footer>
+
+  <script>
+    function logout() {
+      localStorage.removeItem("token");
+      localStorage.removeItem("cart");
+      window.location.href = "login.html";
+    }
+
+    // Function to handle adding items to the cart
+    function addToCart(cakeName) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.push({ name: cakeName });
+      localStorage.setItem('cart', JSON.stringify(cart));
+
+      // Feedback to the user
+      alert(`${cakeName} has been added to your cart.`);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const buttons = document.querySelectorAll('.cake-card button');
+      buttons.forEach(button => {
+        button.addEventListener('click', function() {
+          const cakeName = this.parentElement.querySelector('h3').textContent;
+          addToCart(cakeName);
+        });
+      });
+    });
+  </script>
   <script src="js/cart.js"></script>
+
 </body>
 </html>
