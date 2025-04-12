@@ -2,7 +2,7 @@ const token = localStorage.getItem("token");
 const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
 
 async function loadCart() {
-  const res = await fetch("http://localhost:5000/api/products", {
+  const res = await fetch("https://onlinecakeorder-4.onrender.com/api/products", {
     headers: { Authorization: `Bearer ${token}` }
   });
   const products = await res.json();
@@ -22,7 +22,7 @@ async function loadCart() {
 }
 
 function placeOrder() {
-  fetch("http://localhost:5000/api/orders", {
+  fetch("https://onlinecakeorder-4.onrender.com/api/orders", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

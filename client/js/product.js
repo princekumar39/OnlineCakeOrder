@@ -2,7 +2,7 @@ let allProducts = [];
 
 async function loadProducts() {
   const token = localStorage.getItem("token");
-  const res = await fetch("http://localhost:5000/api/products", {
+  const res = await fetch("https://onlinecakeorder-4.onrender.com/api/products", {
     headers: { Authorization: `Bearer ${token}` }
   });
   allProducts = await res.json();
